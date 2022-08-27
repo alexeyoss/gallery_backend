@@ -7,7 +7,7 @@ data class TokenCache(
     val token: String
 )
 
-
+@Deprecated("Use DB entities into the DB package")
 object InMemoryCache {
     val userList: MutableList<RegisterReceiveRemote> = mutableListOf()
     val token: MutableList<TokenCache> = mutableListOf()

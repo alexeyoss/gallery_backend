@@ -9,8 +9,13 @@ import ru.surfeducation.features.register.configureRegisterRouting
 import ru.surfeducation.plugins.*
 
 fun main() {
-    Database.connect("jdbc:postgresql://localhost:5423/surf_education", driver = "org.postgresql.Driver",
-    password = "Somali050796!")
+
+    Database.connect(
+        url = "jdbc:postgresql://localhost:5432/surf_education",
+        driver = "org.postgresql.Driver",
+        user = "postgres",
+        password = "Somali050796!"
+    )
 
     embeddedServer(CIO, port = 8080, host = "0.0.0.0") {
         configureSerialization()

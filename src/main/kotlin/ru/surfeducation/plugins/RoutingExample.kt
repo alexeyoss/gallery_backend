@@ -8,7 +8,7 @@ fun Application.configureRouting() {
 
     routing {
         get("/") {
-            call.respondText("Start page")
+            call.respondText("Main page")
         }
     }
 }
