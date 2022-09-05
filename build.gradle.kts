@@ -24,6 +24,9 @@ repositories {
 }
 
 dependencies {
+    // Netty Server Client
+    implementation("io.ktor:ktor-server-netty:$ktor_version")
+    // Common dependencies
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-cio-jvm:$ktor_version")
@@ -37,5 +40,9 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     // Postgres SQL
-    implementation("org.postgresql:postgresql:42.2.2")
+    implementation("org.postgresql:postgresql:42.4.2")
+}
+
+tasks {
+    create("stage").dependsOn("installDist")
 }

@@ -1,0 +1,1 @@
+web: ./build/install/ru.surfeducation/bin/ru.surfeducation
