@@ -3,9 +3,8 @@ package ru.surfeducation.plugins
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
-import kotlinx.serialization.Serializable
 
-fun Application.configureSerialization() {
+fun Application.addJSONSerialization() {
     install(ContentNegotiation) {
         json()
     }

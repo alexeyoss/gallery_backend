@@ -1,9 +1,9 @@
-package ru.surfeducation.features.register
+package ru.surfeducation.db.users
 
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RegisterReceiveRemote(
+data class UserResponseDTO(
     val phone: String,
     val password: String,
     val email: String,
@@ -12,10 +12,4 @@ data class RegisterReceiveRemote(
     val avatar: String,
     val city: String,
     val about: String
-)
-
-
-@Serializable
-data class RegisterResponseRemote(
-    val token: String
 )

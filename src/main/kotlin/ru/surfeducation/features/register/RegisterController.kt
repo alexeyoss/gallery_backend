@@ -5,8 +5,6 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import org.jetbrains.exposed.exceptions.ExposedSQLException
-import ru.surfeducation.cache.InMemoryCache
-import ru.surfeducation.cache.TokenCache
 import ru.surfeducation.db.tokens.TokenDTO
 import ru.surfeducation.db.tokens.Tokens
 import ru.surfeducation.db.users.UserDTO

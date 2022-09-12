@@ -5,7 +5,7 @@ import io.ktor.server.netty.*
 import org.jetbrains.exposed.sql.Database
 import ru.surfeducation.features.login.configureLoginRouting
 import ru.surfeducation.features.register.configureRegisterRouting
-import ru.surfeducation.plugins.configureSerialization
+import ru.surfeducation.plugins.addJSONSerialization
 
 fun main() {
 
@@ -17,7 +17,7 @@ fun main() {
     )
 
     embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0") {
-        configureSerialization()
+        addJSONSerialization()
 
         configureLoginRouting()
         configureRegisterRouting()
