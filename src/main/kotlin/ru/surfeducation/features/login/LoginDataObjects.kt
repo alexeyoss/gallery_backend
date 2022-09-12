@@ -1,7 +1,7 @@
 package ru.surfeducation.features.login
 
 import kotlinx.serialization.Serializable
-import ru.surfeducation.db.users.UserDTO
+import ru.surfeducation.db.users.UserInfoDTO
 
 
 @Serializable
@@ -13,5 +13,5 @@ data class LoginReceiveRemote(
 @Serializable
 data class LoginResponseRemote(
     val token: String,
-    val user_info: UserDTO
+    val user_info: UserInfoDTO
 )

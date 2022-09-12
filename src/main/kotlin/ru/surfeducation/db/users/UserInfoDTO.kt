@@ -3,9 +3,8 @@ package ru.surfeducation.db.users
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserResponseDTO(
+data class UserInfoDTO(
     val phone: String,
-    val password: String,
     val email: String,
     val firstName: String,
     val lastName: String,

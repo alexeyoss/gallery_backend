@@ -33,16 +33,22 @@ object Users : Table("users") {
         }
     }
 
-    fun fetchUser(phone: String): UserResponseDTO? {
+    fun fetchUser(phone: String): UserDTO? {
         return try {
             val userModel = transaction {
                 Users.select {
                     Users.phone.eq(phone)
                 }.single()
             }
-            UserResponseDTO(
+            UserDTO(
                 phone = userModel[Users.phone],
-                email
+                password = userModel[password],
+                email = userModel[email],
+                firstName = userModel[first_name],
+                lastName = userModel[last_name],
+                avatar = userModel[avatar],
+                city = userModel[city],
+                about = userModel[about]
             )
         } catch (e: Exception) {
             return null

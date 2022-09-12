@@ -6,8 +6,8 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import ru.surfeducation.db.tokens.TokenDTO
 import ru.surfeducation.db.tokens.Tokens
+import ru.surfeducation.db.users.UserInfoDTO
 import ru.surfeducation.db.users.Users
-import java.util.*
 
 class LoginController {
 
@@ -23,8 +23,19 @@ class LoginController {
 
                 Tokens.insert(tokenDTO.first)
 
-                val userInfoDTO =
-                    call.respond(LoginResponseRemote(token = tokenDTO.second))
+                val userInfoDTO = call.respond(
+                    LoginResponseRemote(
+                        token = tokenDTO.second, user_info = UserInfoDTO(
+                            phone = userDTO.phone,
+                            email = userDTO.email,
+                            firstName = userDTO.firstName,
+                            lastName = userDTO.lastName,
+                            avatar = userDTO.avatar,
+                            city = userDTO.city,
+                            about = userDTO.about
+                        )
+                    )
+                )
             } else {
                 call.respond(HttpStatusCode.BadRequest, "Invalid password")
             }
