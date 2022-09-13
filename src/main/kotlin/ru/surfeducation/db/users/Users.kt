@@ -20,7 +20,7 @@ object Users : Table("users") {
     fun insert(userDTO: UserDTO) {
         transaction {
             Users.insert {
-                it[id] = UUID.randomUUID()
+                it[id] = UUID.fromString(userDTO.id)
                 it[phone] = userDTO.phone
                 it[password] = userDTO.password
                 it[email] = userDTO.email
@@ -41,6 +41,7 @@ object Users : Table("users") {
                 }.single()
             }
             UserDTO(
+                id = userModel[id].toString(),
                 phone = userModel[Users.phone],
                 password = userModel[password],
                 email = userModel[email],

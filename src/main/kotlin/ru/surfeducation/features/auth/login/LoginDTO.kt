@@ -1,4 +1,4 @@
-package ru.surfeducation.features.login
+package ru.surfeducation.features.auth
 
 import kotlinx.serialization.Serializable
 import ru.surfeducation.db.users.UserInfoDTO

@@ -6,12 +6,12 @@ import kotlinx.serialization.Serializable
 data class RegisterReceiveRemote(
     val phone: String,
     val password: String,
-    val email: String,
-    val firstName: String,
-    val lastName: String,
-    val avatar: String,
-    val city: String,
-    val about: String
+    val email: String?,
+    val firstName: String?,
+    val lastName: String?,
+    val avatar: String?,
+    val city: String?,
+    val about: String?
 )
 
 

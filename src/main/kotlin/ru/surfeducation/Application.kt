@@ -1,11 +1,11 @@
 package ru.surfeducation
 
+import io.ktor.server.cio.*
 import io.ktor.server.engine.*
-import io.ktor.server.netty.*
 import org.jetbrains.exposed.sql.Database
-import ru.surfeducation.features.login.configureLoginRouting
+import ru.surfeducation.features.auth.configureAuthRouting
 import ru.surfeducation.features.register.configureRegisterRouting
-import ru.surfeducation.plugins.addJSONSerialization
+import ru.surfeducation.plugins.configureJSONSerialization
 
 fun main() {
 
@@ -16,10 +16,11 @@ fun main() {
         password = "Somali050796!"
     )
 
-    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0") {
-        addJSONSerialization()
+//    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0")
+    embeddedServer(CIO, host = "0.0.0.0", port = 8080) {
+        configureJSONSerialization()
 
-        configureLoginRouting()
+        configureAuthRouting()
         configureRegisterRouting()
     }.start(wait = true)
 }

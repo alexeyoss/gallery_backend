@@ -2,9 +2,11 @@ package ru.surfeducation.db.users
 
 import kotlinx.serialization.Serializable
 import ru.surfeducation.features.register.RegisterReceiveRemote
+import java.util.*
 
 @Serializable
 data class UserDTO(
+    val id: String,
     val phone: String,
     val password: String,
     val email: String,
@@ -17,14 +19,15 @@ data class UserDTO(
     companion object {
         fun newUserDTO(registerReceiveRemote: RegisterReceiveRemote): UserDTO {
             return UserDTO(
+                id= UUID.randomUUID().toString(),
                 phone = registerReceiveRemote.phone,
                 password = registerReceiveRemote.password,
-                email = registerReceiveRemote.email,
-                firstName = registerReceiveRemote.firstName,
-                lastName = registerReceiveRemote.lastName,
-                avatar = registerReceiveRemote.avatar,
-                city = registerReceiveRemote.city,
-                about = registerReceiveRemote.about
+                email = registerReceiveRemote.email ?: "",
+                firstName = registerReceiveRemote.firstName ?: "",
+                lastName = registerReceiveRemote.lastName ?: "",
+                avatar = registerReceiveRemote.avatar ?: "",
+                city = registerReceiveRemote.city ?: "",
+                about = registerReceiveRemote.about ?: ""
             )
         }
     }

@@ -7,7 +7,7 @@ plugins {
     application
     kotlin("jvm") version "1.7.10"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.7.10"
-    id("io.ktor.plugin") version "2.1.0"
+    id("io.ktor.plugin") version "2.1.1"
 }
 
 group = "ru.surfeducation"
@@ -40,7 +40,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     // Postgres SQL
-    implementation("org.postgresql:postgresql:42.4.2")
+    implementation("org.postgresql:postgresql:42.5.0")
 }
 
 tasks {
