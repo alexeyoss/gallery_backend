@@ -4,10 +4,9 @@ import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
-import java.util.*
 
 object Users : Table("users") {
-    private val id = Users.uuid("id")
+    private val id = Users.integer("id").autoIncrement()
     private val phone = Users.varchar("phone", 16)
     private val password = Users.varchar("password", 32)
     private val email = Users.varchar("email", 32)
@@ -17,10 +16,10 @@ object Users : Table("users") {
     private val city = Users.varchar("city", 32)
     private val about = Users.varchar("about", 256)
 
+    override val primaryKey = PrimaryKey(id)
     fun insert(userDTO: UserDTO) {
         transaction {
             Users.insert {
-                it[id] = UUID.fromString(userDTO.id)
                 it[phone] = userDTO.phone
                 it[password] = userDTO.password
                 it[email] = userDTO.email
@@ -41,7 +40,6 @@ object Users : Table("users") {
                 }.single()
             }
             UserDTO(
-                id = userModel[id].toString(),
                 phone = userModel[Users.phone],
                 password = userModel[password],
                 email = userModel[email],

@@ -20,13 +20,12 @@ class LoginController {
         if (userDTO == null) call.respond(HttpStatusCode.Conflict, "User not found")
         else {
             if (userDTO.password == loginReceiveRemote.password) {
-                val oldTokenDTO = Tokens.fetchToken(loginReceiveRemote.phone)
+                val oldTokenDTO = Tokens.fetchTokenByPhone(loginReceiveRemote.phone)
 
                 if (oldTokenDTO != null) {
                     call.respond(
                         LoginResponseRemote(
-                            token = oldTokenDTO.token.toString(), user_info = UserInfoDTO( // TODO mappers
-                                id = userDTO.id,
+                            token = oldTokenDTO.token, user_info = UserInfoDTO(
                                 phone = userDTO.phone,
                                 email = userDTO.email,
                                 firstName = userDTO.firstName,
@@ -41,12 +40,11 @@ class LoginController {
                 } else {
                     val newTokenDTO = TokenDTO.newTokenDTO(loginReceiveRemote.phone)
 
-                    Tokens.insert(newTokenDTO.first)
+                    Tokens.insert(newTokenDTO)
 
                     call.respond(
                         LoginResponseRemote(
-                            token = newTokenDTO.second.toString(), user_info = UserInfoDTO(
-                                id = userDTO.id,
+                            token = newTokenDTO.token, user_info = UserInfoDTO(
                                 phone = userDTO.phone,
                                 email = userDTO.email,
                                 firstName = userDTO.firstName,

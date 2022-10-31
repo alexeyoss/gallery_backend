@@ -41,6 +41,9 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
     // Postgres SQL
     implementation("org.postgresql:postgresql:42.5.0")
+    // Auth-JWT
+    implementation("io.ktor:ktor-server-auth:$ktor_version")
+    implementation("io.ktor:ktor-server-auth-jwt:$ktor_version")
 }
 
 tasks {

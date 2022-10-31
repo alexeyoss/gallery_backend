@@ -3,7 +3,6 @@ package ru.surfeducation.features.auth
 import kotlinx.serialization.Serializable
 import ru.surfeducation.db.users.UserInfoDTO
 
-
 @Serializable
 data class LoginReceiveRemote(
     val phone: String,

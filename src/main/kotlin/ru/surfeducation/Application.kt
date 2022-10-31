@@ -9,6 +9,7 @@ import ru.surfeducation.plugins.configureJSONSerialization
 
 fun main() {
 
+    // TODO refactoring
     Database.connect(
         url = "jdbc:postgresql://localhost:5432/surf_education",
         driver = "org.postgresql.Driver",
@@ -16,11 +17,11 @@ fun main() {
         password = "Somali050796!"
     )
 
-//    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0")
     embeddedServer(CIO, host = "0.0.0.0", port = 8080) {
         configureJSONSerialization()
 
         configureAuthRouting()
         configureRegisterRouting()
+//        configurePostsRouting() TODO implement logic
     }.start(wait = true)
 }

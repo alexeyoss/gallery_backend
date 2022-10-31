@@ -13,9 +13,3 @@ data class RegisterReceiveRemote(
     val city: String?,
     val about: String?
 )
-
-
-@Serializable
-data class RegisterResponseRemote(
-    val token: String
-)

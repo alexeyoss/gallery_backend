@@ -1,23 +1,16 @@
 package ru.surfeducation.db.tokens
 
-import java.util.*
-
-typealias TokenString = String
+import ru.surfeducation.features.auth.utils.TokenHandler
 
 data class TokenDTO(
-    val id: String,
     val phone: String,
-    val token: UUID
+    val token: String
 ) {
     companion object {
-        fun newTokenDTO(receivePhone: String): Pair<TokenDTO, UUID> {
-            val token = UUID.randomUUID()
-            return Pair(
-                TokenDTO(
-                    id = UUID.randomUUID().toString(),
-                    phone = receivePhone,
-                    token = token
-                ), token
+        fun newTokenDTO(receivePhone: String): TokenDTO {
+            return TokenDTO(
+                phone = receivePhone,
+                token = TokenHandler.createNewToken()
             )
         }
     }

@@ -15,6 +15,6 @@ class RegisterValidator(
 
     companion object {
         @JvmStatic
-        val phoneRegexp = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}\$".toRegex()
+        val phoneRegexp = "\\+7\\d{10}\$".toRegex()
     }
 }

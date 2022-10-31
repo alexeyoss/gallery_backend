@@ -6,7 +6,6 @@ import java.util.*
 
 @Serializable
 data class UserDTO(
-    val id: String,
     val phone: String,
     val password: String,
     val email: String,
@@ -19,7 +18,6 @@ data class UserDTO(
     companion object {
         fun newUserDTO(registerReceiveRemote: RegisterReceiveRemote): UserDTO {
             return UserDTO(
-                id= UUID.randomUUID().toString(),
                 phone = registerReceiveRemote.phone,
                 password = registerReceiveRemote.password,
                 email = registerReceiveRemote.email ?: "",
